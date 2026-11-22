@@ -1,0 +1,28 @@
+# 環境変数・シークレット（絶対にコミットしない）
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+
+# 生成物・ローカル永続化データ
+output/
+data/
+*.db
+*.sqlite3
+
+# OS / エディタ
+.DS_Store
+.vscode/
+.idea/

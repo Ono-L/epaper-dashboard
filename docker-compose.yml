@@ -1,0 +1,25 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: epaper-dashboard
+    ports:
+      - "8000:8000"
+    environment:
+      API_KEY: ${API_KEY:-change-me-local-dev-key}
+      WEATHER_LATITUDE: ${WEATHER_LATITUDE:-35.6895}
+      WEATHER_LONGITUDE: ${WEATHER_LONGITUDE:-139.6917}
+      WEATHER_LOCATION_NAME: ${WEATHER_LOCATION_NAME:-東京}
+      TIMEZONE: ${TIMEZONE:-Asia/Tokyo}
+      DISPLAY_MODE: ${DISPLAY_MODE:-mock}
+      OUTPUT_IMAGE_PATH: ${OUTPUT_IMAGE_PATH:-output/preview.png}
+      DB_PATH: ${DB_PATH:-data/notifications.db}
+      FONT_PATH: ${FONT_PATH:-}
+      MAX_DISPLAY_NOTIFICATIONS: ${MAX_DISPLAY_NOTIFICATIONS:-5}
+      MAX_STORED_NOTIFICATIONS: ${MAX_STORED_NOTIFICATIONS:-50}
+      WEATHER_CACHE_SECONDS: ${WEATHER_CACHE_SECONDS:-600}
+    volumes:
+      - ./output:/app/output
+      - ./data:/app/data
+    restart: unless-stopped
